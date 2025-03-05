@@ -26,28 +26,28 @@ class ToDoTestCase(unittest.TestCase):
     def test_remove_all_task(self):
         """test clearing of all tasks"""
 
-        self.my_list.tasks = ["Make the bed", "read for 2hrs"]
+        self.my_list.tasks["tasks"] = ["Make the bed", "read for 2hrs"]
         self.my_list.remove_all("yes")
-        self.assertEqual(self.my_list.tasks, [])
+        self.assertEqual(self.my_list.tasks["tasks"], [])
 
         # when the user enters a response that is not a yes
-        self.my_list.tasks = ["Make the bed", "read for 2hrs", "Eat"]
+        self.my_list.tasks["tasks"] = ["Make the bed", "read for 2hrs", "Eat"]
         self.assertEqual(self.my_list.remove_all("no"), "Tasks not removed.")
-        self.assertEqual(self.my_list.tasks, ["Make the bed", "read for 2hrs", "Eat"])
+        self.assertEqual(self.my_list.tasks["tasks"], ["Make the bed", "read for 2hrs", "Eat"])
 
         for command in self.commands:
-            self.my_list.tasks = ["Go the gym", "feed the pets", "Cook rice"]
+            self.my_list.tasks["tasks"] = ["Go the gym", "feed the pets", "Cook rice"]
             self.assertEqual(self.my_list.remove_all(command), "You have no more tasks remaining.")
 
     def test_remove_task(self):
         """test for task removal from the task list"""
 
-        self.my_list.tasks = []
+        self.my_list.tasks["tasks"] = []
         for command in self.commands:  # when the are no tasks
             self.assertEqual(self.my_list.remove_task(1, command), "\nThere is no task at that index.\n")
 
         for command in self.commands:
-            self.my_list.tasks = ["Go to Gym"]
+            self.my_list.tasks["tasks"] = ["Go to Gym"]
             self.assertEqual(self.my_list.remove_task(1, command), "\nTask removed.\n")
             self.assertEqual(self.my_list.remove_task(0, command), "\nThat is not a valid index.\n")
             self.assertEqual(self.my_list.remove_task(-1, command), "\nThat is not a valid index.\n")
@@ -63,11 +63,11 @@ class ToDoTestCase(unittest.TestCase):
 
         for i in range(3):  # get the test cases by index
             if i == 0:
-                self.my_list.tasks = ["Feed the dog"]
+                self.my_list.tasks["tasks"] = ["Feed the dog"]
             elif i == 1:
-                self.my_list.tasks = []
+                self.my_list.tasks["tasks"] = []
             else:
-                self.my_list.tasks = ["Feed the dog", "Go to the park"]
+                self.my_list.tasks["tasks"] = ["Feed the dog", "Go to the park"]
 
             self.assertEqual(self.my_list.update_task(test_cases[i]["input"],  # value as index to the task in
                                                       # self.tasks

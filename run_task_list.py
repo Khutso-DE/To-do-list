@@ -1,4 +1,4 @@
-from task_list import ToDoList, get_valid_int
+from task_list import *
 import time
 import sys
 
