@@ -10,6 +10,7 @@ def get_valid_int() -> int:
         if number.isdigit():
             return int(number)
 
+
 class ToDoList:
     """represent a to-do list application"""
 
@@ -91,7 +92,7 @@ class ToDoList:
                 print(f'{i + 1}) {self.tasks["tasks"][i]}')
             print()
         time.sleep(1)
-        
+
     def update_task(self, index: int, changes: str):
         """update the task in the to-do list"""
 
@@ -111,10 +112,3 @@ class ToDoList:
 
         ToDoList.save_updates(ToDoList.file, self.tasks)
         return "\nTask updated.\n"
-
-"""
-updates:
-    remove all task
-    create a history or back-up for all removed tasks
-    add a json file
-"""
