@@ -1,4 +1,4 @@
-import  time
+import time
 
 
 def get_valid_int() -> int:
@@ -33,13 +33,12 @@ class ToDoList:
             self.tasks.append(task)
             return "\nTask added.\n"
 
-    def remove_task(self, index: int):
+    def remove_task(self, index: int, command: str):
         """removes a task by its index"""
         if index <= 0:
             return "\nThat is not a valid index.\n"
 
-        command = input("Are you sure you want to remove the task? (Y/N): ").lower().strip()
-        if command == "yes" or command == "y":
+        if command.lower() == "yes" or command.lower() == "y":
             try:
                 self.tasks.remove(self.tasks[index - 1])
             except IndexError:
@@ -49,13 +48,22 @@ class ToDoList:
         else:
             return "\nTask not removed\n"
 
+    def remove_all(self, response: str):
+        """removes all the tasks at once"""
+
+        if response.lower() == "yes" or response.lower() == "y":
+            self.tasks.clear()
+            return "You have no more tasks remaining."
+        else:
+            return "Tasks not removed."
+
     def display_tasks(self) -> None:
         """print the list of to-do's on the console"""
         if not self.tasks:
             print("\n--- No Tasks ---\n")
             return
         else:
-            print("\n--- To-Do List ---\n")
+            print("\n--- To-Do List ---")
             for i in range(len(self.tasks)):
                 time.sleep(0.4)
                 print(f"{i + 1}) {self.tasks[i]}")
@@ -83,5 +91,6 @@ class ToDoList:
 """
 updates:
     remove all task
+    create a history or back-up for all removed tasks
     add a json file
 """

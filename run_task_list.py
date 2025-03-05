@@ -9,11 +9,12 @@ def run_application():
           "and update them.\n")
     App = ToDoList()
 
-    menu = "\n---To-do List---\n1) Add task (+)\n2) Update task\n3) Remove Task\n4)Exit\n"
+    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n"
     running = True
     while running:
         time.sleep(1)
         App.display_tasks()
+        time.sleep(0.7)
         print(menu)
         time.sleep(0.7)
 
@@ -23,9 +24,9 @@ def run_application():
 
         if option == "1":
             task = input("Task: ")
-            time.sleep(1)
+            time.sleep(0.8)
             print(App.add_task(task))
-            time.sleep(1)
+            time.sleep(0.8)
 
         elif option == "2":
             # make sure user enters a valid input
@@ -41,12 +42,23 @@ def run_application():
             if App.tasks:
                 task = get_valid_int()
                 time.sleep(1)
-                print(App.remove_task(task))
+                command = input("Are you sure you want to remove the task? (Y/N): ").lower().strip()
+                print(App.remove_task(task, command))
                 time.sleep(1)
 
         elif option == "4":
+            if App.tasks:
+                # get user confirmation
+                response = input("WARNING: You are about to remove all your tasks! This action cannot be reversed.\n"
+                                 "Are you sure? (Y/N): ").lower().strip()
+                time.sleep(0.8)
+                print(App.remove_all(response))
+                time.sleep(0.8)
+
+        elif option == "5":
             print("App closed...")
             running = False
+
         else:
             time.sleep(0.7)
             print("That is not a valid option")
