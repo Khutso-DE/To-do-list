@@ -75,3 +75,14 @@ class ToDoTestCase(unittest.TestCase):
                                                       ),
                              test_cases[i]["output"]  # value as the output expected
                              )
+
+    def test_search_tasks(self):
+        """test keyword search"""
+
+        self.my_list.tasks["tasks"] = ["Feed the dog", "Go to the park", "feed cat"]
+        self.assertEqual(self.my_list.search_tasks("feed"), [(1, "Feed the dog"), (3, "feed cat")])
+        self.assertEqual(self.my_list.search_tasks("PARK"), [(2, "Go to the park")])
+        self.assertEqual(self.my_list.search_tasks("zzz"), [])
+        self.assertEqual(self.my_list.search_tasks("  "), [])
+        self.my_list.tasks["tasks"] = []
+        self.assertEqual(self.my_list.search_tasks("feed"), [])

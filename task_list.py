@@ -93,6 +93,14 @@ class ToDoList:
             print()
         time.sleep(1)
 
+    def search_tasks(self, keyword: str) -> list:
+        """return (position, task) pairs whose text contains keyword (case-insensitive)"""
+        keyword = keyword.strip().lower()
+        if not keyword:
+            return []
+        return [(i, t) for i, t in enumerate(self.tasks["tasks"], start=1)
+                if keyword in t.lower()]
+
     def update_task(self, index: int, changes: str):
         """update the task in the to-do list"""
 
