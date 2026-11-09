@@ -1,21 +1,15 @@
 # Completion Report
 
-Branch: test/oh-agent-trial
-
-## Roles
-- Activated: Coordinator/Team Lead, Backend Engineer (task_list.py, run_task_list.py), Tester (test_task_list.py).
-- Skipped: PM, UX, Architect, Frontend, DBA, DevOps, Security Reviewer (no need for a small stdlib change).
-- Combined roles: one agent held all three active roles, so there was no independent review.
+Branch: feat/task-count-helper
 
 ## Changes
-- `ToDoList.search_tasks(keyword)`: case-insensitive substring search. Returns `[(position, task)]`. Blank keyword returns `[]`. Existing methods are unchanged.
-- `run_task_list.py`: new menu option 6 "Search tasks".
-- `test_task_list.py`: new `test_search_tasks`.
+- `ToDoList.get_task_count()`: returns the number of tasks as an int. Existing methods are unchanged.
+- `run_task_list.py`: new menu option 7 shows the total task count.
+- `test_task_list.py`: new unit tests for the helper.
 
 ## Verification
-- `python3 -m unittest test_task_list.py -v` -> exit code 0, 5 tests OK.
+- `python3 -m unittest test_task_list.py -v` -> 7 tests pass.
 
 ## Notes
-- Tests write an untracked `tasks.json` in the repo (existing behaviour). It and `__pycache__` were not committed.
+- `tasks.json` and `__pycache__` are not committed.
 - The menu option was not run interactively.
-- No push, no PR, no `.idea/` changes.

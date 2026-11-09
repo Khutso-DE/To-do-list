@@ -101,6 +101,10 @@ class ToDoList:
         return [(i, t) for i, t in enumerate(self.tasks["tasks"], start=1)
                 if keyword in t.lower()]
 
+    def get_task_count(self) -> int:
+        """return the total number of tasks"""
+        return len(self.tasks["tasks"])
+
     def update_task(self, index: int, changes: str):
         """update the task in the to-do list"""
 

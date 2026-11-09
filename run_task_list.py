@@ -9,7 +9,7 @@ def run_application():
           "and update them.\n")
     App = ToDoList()
 
-    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n6) Search tasks\n"
+    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n6) Search tasks\n7) Show total task count\n"
     running = True
     while running:
         time.sleep(1)
@@ -68,6 +68,9 @@ def run_application():
                     print(f"{position}) {found}")
             else:
                 print("\nNo matching tasks.")
+
+        elif option == "7":
+            print(f"\nTotal tasks: {App.get_task_count()}")
 
         else:
             time.sleep(0.7)
