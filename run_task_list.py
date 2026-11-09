@@ -9,7 +9,7 @@ def run_application():
           "and update them.\n")
     App = ToDoList()
 
-    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n"
+    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n6) Search tasks\n"
     running = True
     while running:
         time.sleep(1)
@@ -58,6 +58,16 @@ def run_application():
         elif option == "5":
             print("App closed...")
             running = False
+
+        elif option == "6":
+            keyword = input("Search keyword: ")
+            results = App.search_tasks(keyword)
+            if results:
+                print("\n--- Search Results ---")
+                for position, found in results:
+                    print(f"{position}) {found}")
+            else:
+                print("\nNo matching tasks.")
 
         else:
             time.sleep(0.7)
