@@ -86,3 +86,13 @@ class ToDoTestCase(unittest.TestCase):
         self.assertEqual(self.my_list.search_tasks("  "), [])
         self.my_list.tasks["tasks"] = []
         self.assertEqual(self.my_list.search_tasks("feed"), [])
+
+    def test_get_task_count_empty(self):
+        """count is 0 for an empty list"""
+        self.my_list.tasks["tasks"] = []
+        self.assertEqual(self.my_list.get_task_count(), 0)
+
+    def test_get_task_count_populated(self):
+        """count matches number of tasks"""
+        self.my_list.tasks["tasks"] = ["a", "b", "c"]
+        self.assertEqual(self.my_list.get_task_count(), 3)
