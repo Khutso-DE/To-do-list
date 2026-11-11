@@ -105,6 +105,12 @@ class ToDoList:
         """return the total number of tasks"""
         return len(self.tasks["tasks"])
 
+    def get_last_task(self):
+        """return the last task string, or None if the list is empty"""
+        if not self.tasks["tasks"]:
+            return None
+        return self.tasks["tasks"][-1]
+
     def update_task(self, index: int, changes: str):
         """update the task in the to-do list"""
 
