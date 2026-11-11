@@ -96,3 +96,13 @@ class ToDoTestCase(unittest.TestCase):
         """count matches number of tasks"""
         self.my_list.tasks["tasks"] = ["a", "b", "c"]
         self.assertEqual(self.my_list.get_task_count(), 3)
+
+    def test_get_last_task_empty(self):
+        """last task is None for an empty list"""
+        self.my_list.tasks["tasks"] = []
+        self.assertIsNone(self.my_list.get_last_task())
+
+    def test_get_last_task_populated(self):
+        """last task is the final item"""
+        self.my_list.tasks["tasks"] = ["a", "b", "c"]
+        self.assertEqual(self.my_list.get_last_task(), "c")

@@ -9,7 +9,7 @@ def run_application():
           "and update them.\n")
     App = ToDoList()
 
-    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n6) Search tasks\n7) Show total task count\n"
+    menu = "\n---OPTIONS---\n1) Add task (+)\n2) Update task\n3) Remove Task (-)\n4) Remove all tasks\n5) Exit (x)\n6) Search tasks\n7) Show total task count\n8) Show latest task\n"
     running = True
     while running:
         time.sleep(1)
@@ -71,6 +71,10 @@ def run_application():
 
         elif option == "7":
             print(f"\nTotal tasks: {App.get_task_count()}")
+
+        elif option == "8":
+            last = App.get_last_task()
+            print(f"\nLatest task: {last}" if last is not None else "\nNo tasks.")
 
         else:
             time.sleep(0.7)
